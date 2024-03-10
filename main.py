@@ -2,7 +2,9 @@
 # init board state
 rows = cols = 3
 characters = ('O', 'X')
-board_state = [['-' for _ in range(cols)] for _ in range(rows)]
+board_state = [[i * cols + j for j in range(cols)] for i in range(rows)]
+# write the rules of the game
+print("Each position is labeled as follows:")    
 
 #print board state
 for row in board_state:
@@ -10,9 +12,8 @@ for row in board_state:
         print(elem, end=' ')
     print('\n')
 
-# write the rules of the game
+# now init board state to '-'
 
-print("Each position is labeled as follows:")
 
 
 
