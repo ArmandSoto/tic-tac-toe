@@ -1,40 +1,46 @@
 from helper import print_board
+from board import Board
 
 # init board state
-rows = cols = 3
-characters = ('O', 'X')
-board_state = [[i * cols + j for j in range(cols)] for i in range(rows)]
+board = Board()
 
-# write the rules of the game
-print("Each position is labeled as follows: ")
+
+
+while True:
+    user_input = input("Choose X or O: ").upper()
+    if user_input and (user_input == 'O' or user_input == 'X'):
+        break
+    else:
+        print("Invalid Input")
+print("Rules ... \n Please select one of the following positions [0-8]")
 print_board(board_state)
-    
-print("Then select either X or O")
 
-board_state = [['-' for _ in range(cols)] for _ in range(rows)]
+# init board state
+board_state = [['-' for _ in range(board.cols)] for _ in range(board.rows)]
 
 print_board(board_state)
 
 #check for a valid position
 while True:
-    position_input = input("Please enter a valid position: ")
+    position_input = int(input("Please enter a valid position: "))
     if position_input and (position_input in range(0,9)):
         break
     else:
         print("Invalid Input")
 
 #check if user entered "O" or "X"
-while True:
-    user_input = input("Choose X or O ").upper()
-    if user_input and (user_input == 'O' or user_input == 'X'):
-        break
-    else:
-        print("Invalid Input")
 
 #check if something is already there or if it is empty
-    for element in board_state:
-        if element == '-':
-            #make a move
+row_index = int(position_input / 3) # 0, 1, 2
+col_index = int(position_input % 3)
+if board_state[row_index][col_index] == '-':
+    board_state[row_index][col_index] = user_input
+else:
+    print("Area invalid")
+        
+print_board(board_state)
+
+
             
         
 
