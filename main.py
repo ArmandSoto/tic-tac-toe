@@ -18,17 +18,18 @@ board.print()
 while True:
     user_input = input("Would you like to go first?").upper()
     if user_input == 'Y':
-        player_go_first = True
+        player = Player(user_input, True)
+        # also create the opponenet
         break
     elif user_input == 'N':
-        # continue check
-        player_go_first = False
+        player = Player(user_input, False)
+        # also Create the opponent
         break
     else:
         print("Invalid Input")
 
-player = Player(user_input)
-if not player_go_first:
+
+if not player.is_first:
     # opponent goes
     print("Opponent goes first")
 else:
