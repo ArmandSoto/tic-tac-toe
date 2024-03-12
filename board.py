@@ -4,8 +4,11 @@ class Board:
         self.state = [[i * self.cols + j for j in range(self.cols)] for i in range(self.rows)]
         self.characters = ('O', 'X')
 
-def print_board(board):
-    for row in board:
-        for elem in row:
-            print(elem, end=' ')
-        print('\n')        
+    def print(self):
+        for row in self.state:
+            for elem in row:
+                print(elem, end=' ')
+            print('\n')
+
+    def reset(self):
+        self.state = [['-' for _ in range(self.cols)] for _ in range(self.rows)]

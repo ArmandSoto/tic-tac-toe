@@ -1,10 +1,8 @@
-from helper import print_board
 from board import Board
+from player import Player
 
-# init board state
+    
 board = Board()
-
-
 
 while True:
     user_input = input("Choose X or O: ").upper()
@@ -12,33 +10,35 @@ while True:
         break
     else:
         print("Invalid Input")
-print("Rules ... \n Please select one of the following positions [0-8]")
-print_board(board_state)
+print("Rules ... \n Please select one of the following positions [0-8]\n--------------------")
+board.print()
+board.reset()
+board.print()
 
-# init board state
-board_state = [['-' for _ in range(board.cols)] for _ in range(board.rows)]
-
-print_board(board_state)
-
-#check for a valid position
 while True:
-    position_input = int(input("Please enter a valid position: "))
-    if position_input and (position_input in range(0,9)):
+    user_input = input("Would you like to go first?").upper()
+    if user_input == 'Y':
+        player_go_first = True
+        break
+    elif user_input == 'N':
+        # continue check
+        player_go_first = False
         break
     else:
         print("Invalid Input")
 
-#check if user entered "O" or "X"
+player = Player(user_input)
+if not player_go_first:
+    # opponent goes
+    print("Opponent goes first")
+else:
+    player.make_move(board)
+
 
 #check if something is already there or if it is empty
-row_index = int(position_input / 3) # 0, 1, 2
-col_index = int(position_input % 3)
-if board_state[row_index][col_index] == '-':
-    board_state[row_index][col_index] = user_input
-else:
-    print("Area invalid")
+
         
-print_board(board_state)
+board.print()
 
 
             
