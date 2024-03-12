@@ -35,19 +35,8 @@ else:
     player.make_move(board)
 
 
-#check if something is already there or if it is empty
-
         
 board.print()
-
-
-            
-        
-
-
-
-
-
 
 
 
