@@ -14,7 +14,7 @@ class Opponent:
                 self.make_move(board, random_corner)
             else:
                 print("Pick something else, perhaps center")
-
+        board.print()
 
     def make_move(self, board, coordinate):
         x, y = coordinate

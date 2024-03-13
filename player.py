@@ -13,6 +13,7 @@ class Player:
                 print("Invalid Input")
         coordinate = (int(position_input / 3, int(position_input % 3)))
         self.make_move(board, coordinate)
+        board.print()
 
 
     
