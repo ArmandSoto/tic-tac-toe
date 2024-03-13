@@ -1,13 +1,30 @@
+import random
+
 class Opponent:
-    def __init__(self, symbol, is_first):
-        self.symbol = symbol
+    def __init__(self, character, is_first):
+        self.character = character
         self.is_first = not is_first
 
-    def make_move(self, board):
-        if self.is_first:
-            #exhaust the corners
-            for i in range(0,2,2):
-                for j in range(0,2,2):
-                    board[i][j] = self.symbol
+    def go(self, board):
+        # simplify the corner taking
+        corners = [(0,0), (0,2), (2,0), (2,2)]
+        if board.turn < 1:
+            if self.first:
+                random_corner = random.choice(corners)
+                self.make_move(board, random_corner)
+            else:
+                print("Pick something else, perhaps center")
+
+
+    def make_move(self, board, coordinate):
+        x, y = coordinate
+        if board.state[x][y] == '-':
+            board.state[x][y] = self.character
+        else:
+            print("Area invalid")
+        
+    
+        
+
             
         

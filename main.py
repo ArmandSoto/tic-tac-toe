@@ -1,15 +1,17 @@
 from board import Board
 from player import Player
+from opponent import Opponent
 
     
 board = Board()
 
 while True:
-    user_input = input("Choose X or O: ").upper()
-    if user_input and (user_input == 'O' or user_input == 'X'):
+    player_character = input("Choose X or O: ").upper()
+    if player_character and (player_character == 'O' or player_character == 'X'):
         break
     else:
         print("Invalid Input")
+opponent_character = 'X' if player_character == 'O' else 'O'
 print("Rules ... \n Please select one of the following positions [0-8]\n--------------------")
 board.print()
 board.reset()
@@ -18,31 +20,26 @@ board.print()
 while True:
     user_input = input("Would you like to go first?").upper()
     if user_input == 'Y':
-        player = Player(user_input, True)
+        player = Player(player_character, True)
+        opponent = Opponent(opponent_character, True)
         # also create the opponenet
         break
     elif user_input == 'N':
         player = Player(user_input, False)
-        # also Create the opponent
+        opponent = Opponent(opponent_character, False)
         break
     else:
         print("Invalid Input")
 
 
-if not player.is_first:
-    # opponent goes
-    print("Opponent goes first")
+if player.is_first:
+    player.make_move(board.state)
 else:
-    player.make_move(board)
+    opponent.make_move(board.state)
 
-
-        
+       
 board.print()
 
-
-
-
-# now init board state to '-'
 
 
 
