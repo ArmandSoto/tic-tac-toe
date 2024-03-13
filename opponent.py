@@ -9,7 +9,7 @@ class Opponent:
         # simplify the corner taking
         corners = [(0,0), (0,2), (2,0), (2,2)]
         if board.turn < 1:
-            if self.first:
+            if self.is_first:
                 random_corner = random.choice(corners)
                 self.make_move(board, random_corner)
             else:

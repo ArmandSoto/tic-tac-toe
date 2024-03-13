@@ -2,6 +2,7 @@ class Board:
     def __init__(self):
         self.rows = self.cols = 3
         self.state = [[i * self.cols + j for j in range(self.cols)] for i in range(self.rows)]
+        self.available_moves = [[(i,j) for i in range(self.cols)] for j in range(self.rows)]
         self.characters = ('O', 'X')
         self.turn = 0
         
