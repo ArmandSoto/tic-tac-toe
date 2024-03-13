@@ -32,6 +32,8 @@ class Game:
             else:
                 print("Invalid Input")
         return [self.player, self.opponent, self.board]
+    
+    
 
-    def check_win():
+    def check_board():
         print("Checks if there was a win")              
